@@ -22,9 +22,12 @@ Long term:
 - create an jsfx extension that improves on this
 - the purpose of the script is to streamline and optimise midi input as much as possilbe 
 - main vision is to be able to use only a footcontroller (or two buttons on the keyboard) and a midi keyboard, no mouse
-  + if at begining of a note, hold it to move it in the grid back or forward (maybe here add separate actions) -> there is a script for that in ReaPack
-  + move held note up or down an octave (cursor must be on the note or at it's edges) -> there is a script for that already in ReaPack
+  + if at begining of a held note, hold it to move it in the grid back or forward (maybe here add separate actions) 
+  + move held note up or down an octave (cursor must be on the note or at it's edges)
   + add a backspace mode where you delete using the cursor or search to see if a script for that already exists :)
+  + select held notes under cursor
+  + split held notes at cursor
+  + maybe (complicating things too much) for the above do a ignore octave mode
 
 If you think this is worth a beer or two :D
 https://paypal.me/obogz
