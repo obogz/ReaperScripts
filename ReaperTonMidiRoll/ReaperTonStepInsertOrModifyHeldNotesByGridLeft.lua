@@ -1,4 +1,4 @@
--- @description ReaperTon - move Cursor Left By Grid Size And Alter Duration Of Held Notes
+-- @description ReaperTon Step L
 -- @version 1.0
 -- @author obogz, thanks tenfour
 -- @about

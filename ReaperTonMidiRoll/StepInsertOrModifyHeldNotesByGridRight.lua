@@ -1,4 +1,4 @@
--- @description ReaperTon Step R
+-- @description ReaperTon Step R2
 -- @version 1.2
 -- @author obogz, thanks tenfour
 -- @about
