@@ -49,4 +49,4 @@ Tips and tricks:
 - if no notes are pressed the cursor will just navigate back and forward
 - I successfully tested this using the arrow keys
 - search for scripts for playing the midi item from the begining or 2 steps behind to audiotion your progress
-- there are scripts already that operate on all notes under cursor (as in not only the held ones): inversion, deleteion, adjust veolcity etc., these can be easilty integrated in the ReaperTon workflow
+- there are scripts already that operate on all notes under cursor (as in not only the held ones): inversion, deletion, adjust veolcity etc., these can be easilty integrated in the ReaperTon workflow
