@@ -24,7 +24,7 @@ TODO:
 
 Long term:
 - create an jsfx extension that improves on this
-- the purpose of the script is to streamline and optimise midi input as much as possilbe: use the cursor to position yourself, use the keyboard to indicate what notes you want to operate on and use the keys or controller buttons (and/or knobs) to operate on held note. Basicaly like... peeling an apple, you hold what you are operating on with one hand and operate the tool with the other. Or like operating a plotter wood cutter, you hod the material in your hand and use your feet to operate the tool. (disclaimer, I don't know how a plotter works exactly but if I made one, I'd use footswitches :)) )
+- the purpose of the script is to streamline and optimise midi input as much as possilbe: use the cursor to position yourself, use the keyboard to indicate what notes you want to operate on and use the keys or controller buttons (and/or knobs) to operate on held note. Basicaly like... peeling an apple, you hold in one hand and adjust the angle with one hand and use the knife in the other hand. Or like operating a plotter wood cutter, you control the board with your hands and use your feet to operate the tool. (disclaimer, I don't know how a plotter works exactly but if I made one, I'd use footswitches :)) )
 - main vision is to be able to use only a footcontroller (or two buttons on the keyboard) and a midi keyboard, no mouse
   + move held note under cursor by grid step
   + add a backspace mode where you split and delete every thing one grid step behind cursor
