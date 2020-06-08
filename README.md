@@ -15,16 +15,16 @@ Know issue: any new pressed note with the same velocity and pitch as the note at
 
 TODO: 
 - Fix overlaping notes (here I need to think about what solution would be best, maybe compare with Ableton)
-- add a backspace mode where you delete using the cursor
 - see if there is another way to detect retriggerd notes besides comparing velocity
 - cleanup, optimise
 
 Long term:
 - create an jsfx extension that improves on this
 - the purpose of the script is to streamline and optimise midi input as much as possilbe 
-- main vision is to be able to use only a footcontroller and a midi keyboard, no mouse no keyboard
-  + if at begining of a note, hold it to move it in the grid back or forward (maybe here add separate actions)
-  + move held note up or down an octave (cursor must be on the note or at it's edges)
+- main vision is to be able to use only a footcontroller (or two buttons on the keyboard) and a midi keyboard, no mouse
+  + if at begining of a note, hold it to move it in the grid back or forward (maybe here add separate actions) -> there is a script for that in ReaPack
+  + move held note up or down an octave (cursor must be on the note or at it's edges) -> there is a script for that already in ReaPack
+  + add a backspace mode where you delete using the cursor or search to see if a script for that already exists :)
 
 If you think this is worth a beer or two :D
 https://paypal.me/obogz
