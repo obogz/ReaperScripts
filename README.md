@@ -41,7 +41,7 @@ Long term:
 I build this script mainly for my own confot, but as I find ways to improve my flow I'll add them in the folowing section
 
 Tips and tricks:
-- Map actions to a midi foot controller so you can play with both hands
+- Map actions to a midi foot controller so you can play with both hands (a generous foot controller like Nektar Pacer, Behringer FCB1010 or even an Arturia Beatstep if you are not wearing shoes :) )
 - Map tripplet toggle action to a key or foot controller
 - Map grid change action(s) or use a confortable grid size
 - To delete specific notes move at the end of the note(s) and hold the coresponding key on your controller and press back untill you fully deleted
