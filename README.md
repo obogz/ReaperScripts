@@ -20,6 +20,7 @@ TODO:
 - Fix overlaping notes (here I need to think about what solution would be best, maybe compare with Ableton)
 - Fix first held notes note entered in a new media item (happens randomly) 
 - see if there is another way to detect retriggerd notes besides comparing velocity
+- add midi cc relative and mouse wheel support
 - cleanup, optimise
 
 Long term:
