@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="a1c03c754d81486d223124f072d3a2a9dd38b17e" name="ReaperTon">
+<index version="1" commit="25b0191769183f6749ee8713757b05ca33f76629" name="ReaperTon">
   <category name="ReaperTonMidiRoll">
     <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon Step L">
       <metadata>
@@ -32,38 +32,6 @@
       <version name="1.2" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
         <changelog><![CDATA[Initial]]></changelog>
         <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridRight.lua</source>
-      </version>
-    </reapack>
-    <reapack name="StepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon Step L2">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Fast midi step tool\par}
-}
-]]></description>
-        <link rel="donation">https://paypal.me/obogz</link>
-      </metadata>
-      <version name="1.0" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
-        <changelog><![CDATA[Initial]]></changelog>
-        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/StepInsertOrModifyHeldNotesByGridLeft.lua</source>
-      </version>
-    </reapack>
-    <reapack name="StepInsertOrModifyHeldNotesByGridRight.lua" type="script" desc="ReaperTon Step R2">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Fast midi step tool.\par}
-}
-]]></description>
-        <link rel="donation">https://paypal.me/obogz</link>
-      </metadata>
-      <version name="1.2" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
-        <changelog><![CDATA[Initial]]></changelog>
-        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/StepInsertOrModifyHeldNotesByGridRight.lua</source>
       </version>
     </reapack>
   </category>
