@@ -17,9 +17,9 @@ This project was started using this work: https://github.com/thenfour/ReaperScri
 Know issue: any new pressed note with the same velocity and pitch as the note at the cursor will not be considered a new note and will result in extending the previous note. This rearly happnes if you use a keyboard with variable velocity.
 
 TODO: 
-- Fix overlaping notes (here I need to think about what solution would be best, maybe compare with Ableton)
-- Fix first held notes note entered in a new media item (happens randomly) 
-- see if there is another way to detect retriggerd notes besides comparing velocity
+- WIP Fix overlaping notes
+- WIP Fix first held notes note entered in a new media item (happens randomly) 
+- see if there is another way to detect retriggerd notes besides comparing velocity -> extension
 - add midi cc relative and mouse wheel support
 - cleanup, optimise
 
@@ -42,6 +42,7 @@ Long term:
 I build this script mainly for my own confot, but as I find ways to improve my flow I'll add them in the folowing section
 
 Tips and tricks:
+- I found it very helpful to cound the beats while stepping forward
 - Map actions to a midi foot controller so you can play with both hands (a generous foot controller like Nektar Pacer, Behringer FCB1010 or even an Arturia Beatstep if you are not wearing shoes :) )
 - Map tripplet toggle action to a key or foot controller
 - Map grid change action(s) or use a confortable grid size
