@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="78d3119ece529b9b15cd4e468e844f92265563d3">
+<index version="1" commit="a1c03c754d81486d223124f072d3a2a9dd38b17e">
   <category name="ReaperTonMidiRoll">
-    <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon - move Cursor Left By Grid Size And Alter Duration Of Held Notes">
+    <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon Step L">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -16,6 +16,54 @@
         <changelog><![CDATA[Initial]]></changelog>
         <source file="core_midi_roll.lua">https://github.com/obogz/ReaperScripts/raw/78d3119ece529b9b15cd4e468e844f92265563d3/ReaperTonMidiRoll/core_midi_roll.lua</source>
         <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/78d3119ece529b9b15cd4e468e844f92265563d3/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua</source>
+      </version>
+    </reapack>
+    <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridRight.lua" type="script" desc="ReaperTon Step R">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Fast midi step tool.\par}
+}
+]]></description>
+        <link rel="donation">https://paypal.me/obogz</link>
+      </metadata>
+      <version name="1.2" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
+        <changelog><![CDATA[Initial]]></changelog>
+        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridRight.lua</source>
+      </version>
+    </reapack>
+    <reapack name="StepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon Step L2">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Fast midi step tool\par}
+}
+]]></description>
+        <link rel="donation">https://paypal.me/obogz</link>
+      </metadata>
+      <version name="1.0" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
+        <changelog><![CDATA[Initial]]></changelog>
+        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/StepInsertOrModifyHeldNotesByGridLeft.lua</source>
+      </version>
+    </reapack>
+    <reapack name="StepInsertOrModifyHeldNotesByGridRight.lua" type="script" desc="ReaperTon Step R2">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Fast midi step tool.\par}
+}
+]]></description>
+        <link rel="donation">https://paypal.me/obogz</link>
+      </metadata>
+      <version name="1.2" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
+        <changelog><![CDATA[Initial]]></changelog>
+        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/StepInsertOrModifyHeldNotesByGridRight.lua</source>
       </version>
     </reapack>
   </category>
