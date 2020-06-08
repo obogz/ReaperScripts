@@ -1,6 +1,9 @@
 # ReaperTonMidiRoll
 Ableton like midi editor step input actions for Reaper
 
+If you think this is worth a beer or two :D
+https://paypal.me/obogz
+
 DEMO Video here: 
 https://youtu.be/ZZQKqqFqgfo
 
@@ -32,8 +35,6 @@ Long term:
   + select held notes under cursor? or Chain select toggle to select specific notes? (maybe too confusing)
   + ignore octave mode? (maybe too confusing)
 
-If you think this is worth a beer or two :D
-https://paypal.me/obogz
 
 I build this script mainly for my own confot, but as I find ways to improve my flow I'll add them in the folowing section
 
