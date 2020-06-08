@@ -20,7 +20,7 @@ TODO:
 - Fix overlaping notes (here I need to think about what solution would be best, maybe compare with Ableton)
 - add a backspace mode where you delete using the cursor
 - see if there is another way to detect retriggerd notes besides comparing velocity
-- cleanup, optimise, organise and add integration with ReaPack
+- cleanup, optimise
 
 Long term:
 - create an jsfx extension that improves on this
@@ -44,4 +44,5 @@ Tips and tricks:
 - While you go back you are in delete mode (held keys will start deleting as the cursor moves backward)
 - if no notes are pressed the cursor will just navigate back and forward
 - I successfully tested this using the arrow keys
+- search for scripts for playing the midi item from the begining or 2 steps behind to audiotion your progress
 
