@@ -16,7 +16,6 @@ Know issue: any new pressed note with the same velocity and pitch as the note at
 
 TODO: 
 - see if there is another way to detect retriggerd notes besides comparing velocity -> extension
-- add midi cc relative and mouse wheel support
 - cleanup, optimise
 
 Long term:
