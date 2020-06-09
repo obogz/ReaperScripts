@@ -16,7 +16,7 @@ Know issue: any new pressed note with the same velocity and pitch as the note at
 
 TODO: 
 - see if there is another way to detect retriggerd notes besides comparing velocity -> extension
-- cleanup, optimise
+- cleanup, optimise, refactor
 
 Long term:
 - create an jsfx extension that improves on this
