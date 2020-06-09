@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="3050a4b0afc8c55d2901f530cd0066552b4e1f38" name="ReaperTon">
+<index version="1" commit="64385471a611585a9870d5d19a36f11d23a120e9" name="ReaperTon">
   <category name="ReaperTonMidiRoll">
     <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridCC.lua" type="script" desc="ReaperTon Step CC">
       <metadata>
@@ -15,6 +15,10 @@
       <version name="1.3" author="obogz, thanks tenfour" time="2020-06-09T01:49:17Z">
         <changelog><![CDATA[Added CC support]]></changelog>
         <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/ed67d0643a5834cf598e3875084e5735de1365dd/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridCC.lua</source>
+      </version>
+      <version name="1.4" author="obogz, thanks tenfour" time="2020-06-09T14:11:39Z">
+        <changelog><![CDATA[Added CC support and removed logs]]></changelog>
+        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/64385471a611585a9870d5d19a36f11d23a120e9/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridCC.lua</source>
       </version>
     </reapack>
     <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon Step L">
