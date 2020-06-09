@@ -1,10 +1,10 @@
 -- @description ReaperTon Step CC
--- @version 1.3
+-- @version 1.4
 -- @author obogz, thanks tenfour
 -- @about
 -- 	Fast midi step tool.
 -- @changelog
--- 	Added CC support
+-- 	Added CC support and removed logs
 -- @provides
 -- 	[main=midi_editor] .
 -- @donation https://paypal.me/obogz
