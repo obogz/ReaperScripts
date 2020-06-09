@@ -1,5 +1,5 @@
 -- @description ReaperTon Step L
--- @version 1.3
+-- @version 1.4
 -- @author obogz, thanks tenfour
 -- @about
 -- 	Fast midi step tool
@@ -13,6 +13,11 @@
 local path = ({reaper.get_action_context()})[2]:match('^.+[\\//]')
 dofile(path .. 'core_midi_roll.lua')
 reaper.Undo_BeginBlock()
-insertOrModifyHeldNotesByGrid(-1)
+
+
+pcall(function()
+	insertOrModifyHeldNotesByGrid(-1)
+end)
+
 reaper.Undo_EndBlock("ReaperTon Step - move Cursor Left By Grid Size And Alter Duration Of Held Notes", -1)
 
