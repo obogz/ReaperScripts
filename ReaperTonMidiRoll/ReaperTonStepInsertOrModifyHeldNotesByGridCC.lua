@@ -14,7 +14,6 @@ dofile(path .. 'core_midi_roll.lua')
 reaper.Undo_BeginBlock()
 
 local is_new,name,sec,cmd,rel,res,val = reaper.get_action_context()
-reaper.ShowConsoleMsg("val "..val.."\n")
 if val>0 then
 	insertOrModifyHeldNotesByGrid(1)
 elseif val<0 then    
