@@ -10,15 +10,11 @@ https://youtu.be/ZZQKqqFqgfo
 To install either download and add the scripts manualy or use ReaPack add external repo funtion 
 ReaPack: https://github.com/obogz/ReaperScripts/raw/master/index.xml
 
-THIS VERSION IS BETA, some functionality might be added some bugs might exist
-
 This project was started using this work: https://github.com/thenfour/ReaperScripts
 
 Know issue: any new pressed note with the same velocity and pitch as the note at the cursor will not be considered a new note and will result in extending the previous note. This rearly happnes if you use a keyboard with variable velocity.
 
 TODO: 
-- WIP Fix overlaping notes
-- WIP Fix first held notes note entered in a new media item (happens randomly) 
 - see if there is another way to detect retriggerd notes besides comparing velocity -> extension
 - add midi cc relative and mouse wheel support
 - cleanup, optimise
