@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="25b0191769183f6749ee8713757b05ca33f76629" name="ReaperTon">
+<index version="1" commit="03cd4455e5314a97c3325bb30fe6366413a8899b" name="ReaperTon">
   <category name="ReaperTonMidiRoll">
     <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua" type="script" desc="ReaperTon Step L">
       <metadata>
@@ -17,6 +17,11 @@
         <source file="core_midi_roll.lua">https://github.com/obogz/ReaperScripts/raw/78d3119ece529b9b15cd4e468e844f92265563d3/ReaperTonMidiRoll/core_midi_roll.lua</source>
         <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/78d3119ece529b9b15cd4e468e844f92265563d3/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua</source>
       </version>
+      <version name="1.3" author="obogz, thanks tenfour" time="2020-06-09T00:46:03Z">
+        <changelog><![CDATA[fixed all known bugs 9 june 2020]]></changelog>
+        <source file="core_midi_roll.lua">https://github.com/obogz/ReaperScripts/raw/03cd4455e5314a97c3325bb30fe6366413a8899b/ReaperTonMidiRoll/core_midi_roll.lua</source>
+        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/03cd4455e5314a97c3325bb30fe6366413a8899b/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridLeft.lua</source>
+      </version>
     </reapack>
     <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridRight.lua" type="script" desc="ReaperTon Step R">
       <metadata>
@@ -32,6 +37,10 @@
       <version name="1.2" author="obogz, thanks tenfour" time="2020-06-08T17:35:01Z">
         <changelog><![CDATA[Initial]]></changelog>
         <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/a1c03c754d81486d223124f072d3a2a9dd38b17e/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridRight.lua</source>
+      </version>
+      <version name="1.3" author="obogz, thanks tenfour" time="2020-06-09T00:46:03Z">
+        <changelog><![CDATA[fixed all known bugs 9 june 2020]]></changelog>
+        <source main="midi_editor">https://github.com/obogz/ReaperScripts/raw/03cd4455e5314a97c3325bb30fe6366413a8899b/ReaperTonMidiRoll/ReaperTonStepInsertOrModifyHeldNotesByGridRight.lua</source>
       </version>
     </reapack>
   </category>
