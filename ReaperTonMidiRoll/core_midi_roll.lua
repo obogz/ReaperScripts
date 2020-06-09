@@ -1,10 +1,10 @@
 -- @noindex
 -- @description ReaperTon Midi Step Input
--- @version 1.2
+-- @version 1.3
 -- @provides [nomain] .
 
 function DBG(str)
- -- reaper.ShowConsoleMsg(str.."\n")
+  --reaper.ShowConsoleMsg(str.."\n")
 end
 
 
@@ -109,7 +109,7 @@ end
 -- accepts an item from gridDivisions
 local function setGridDivision(divData)
 	if not divData then
-		DBG("won't set grid division without data.")
+		--DBG("won't set grid division without data.")
 		return
 	end
 
@@ -117,13 +117,13 @@ local function setGridDivision(divData)
 		local midiEditor = reaper.MIDIEditor_GetActive()
 	  local mode = reaper.MIDIEditor_GetMode(midiEditor)
 	  if IsInMIDIEditor() and (mode ~= -1) then-- -1 if ME not focused
-	  	DBG("running MIDI Editor command "..divData.mecid.." to change grid to "..divData.desc)
+	  	--DBG("running MIDI Editor command "..divData.mecid.." to change grid to "..divData.desc)
 			reaper.MIDIEditor_OnCommand(midiEditor, divData.mecid)
 		end
 	end
 
 	if divData.maincid then
-	  DBG("running Main command "..divData.maincid.." to change grid to "..divData.desc)
+	  --DBG("running Main command "..divData.maincid.." to change grid to "..divData.desc)
 		reaper.Main_OnCommand(divData.maincid, 0)
 	end
 end
@@ -148,14 +148,14 @@ function MoveEditCursorByGridSize(gridSteps)
 	end
 
 	local midiEditor = reaper.MIDIEditor_GetActive()
-  local mode = reaper.MIDIEditor_GetMode(midiEditor)
-  if IsInMIDIEditor() and (mode ~= -1) then-- -1 if ME not focused
-  	DBG("running MIDI editor command "..mecid)
+	local mode = reaper.MIDIEditor_GetMode(midiEditor)
+	if IsInMIDIEditor() and (mode ~= -1) then-- -1 if ME not focused
+  --DBG("running MIDI editor command "..mecid)
 		reaper.MIDIEditor_OnCommand(midiEditor, mecid)
 		return
 	end
 
-  DBG("running MAIN command "..maincid)
+  --DBG("running MAIN command "..maincid)
 	reaper.Main_OnCommand(maincid, 0)
 end
 
@@ -400,7 +400,7 @@ function getHeldNotes(track)
     pitches[#pitches].note, _, _ = reaper.TrackFX_GetParam(track, iHelper, jsfx.paramIndex_NoteValue)
     pitches[#pitches].chan = reaper.TrackFX_GetParam(track, iHelper, jsfx.paramIndex_Channel)
     pitches[#pitches].velocity = reaper.TrackFX_GetParam(track, iHelper, jsfx.paramIndex_Velocity)
-    DBG("   held note "..pitches[#pitches].note.." / vel "..pitches[#pitches].velocity)
+    --DBG("   held note "..pitches[#pitches].note.." / vel "..pitches[#pitches].velocity)
   end
   return pitches
 end
@@ -444,19 +444,23 @@ function getNotesStartingAtCursor(take, track)
 end
 
 
-function getNotesEndingAtCursor()
+function getStuffAtCursor()
 	local take = findExistingTake()
+	local cursorTime = reaper.GetCursorPosition();
+	
+	-- create take if needed
 	if not take then
-		DBG("can't elongate notes; no available take.")
-		return
+		local noteStartQN = reaper.TimeMap2_timeToQN(0, cursorTime)
+		local noteEndTime = reaper.TimeMap2_QNToTime(0, noteStartQN + reaper.MIDI_GetGrid(take)) 
+		take = createTake(takeStart, takeEnd)
 	end
+
 
 	local track = reaper.GetMediaItemTake_Track(take)
 
 
 	-- find the notes in the current take corresponding to that.
 	-- basically enum notes and find ones that end near the cursor AND are being held
-	local cursorTime = reaper.GetCursorPosition();
 	local cursorPPQ = reaper.MIDI_GetPPQPosFromProjTime(take, cursorTime)
 
 	--Lua: integer retval, number notecntOut, number ccevtcntOut, number textsyxevtcntOut
@@ -465,21 +469,25 @@ function getNotesEndingAtCursor()
 
 	-- let's build a list of note indices corresponding to the notes you're holding down
 	-- at the same time, figure out the duration of those notes. for simplicity, just take the first duration.
-	local oldDurationPPQ
-	local noteIndices = {}
+	local noteIndexesBehind = {}
+	local noteIndexesBeween = {} 
+	local noteIndexesAhead = {}
 	for i = 0, noteCount - 1 do
 		local _, selected, muted, startppq, endppq, _, pitch, _ = reaper.MIDI_GetNote(take, i)
-		DBG("note "..i.." startppq="..startppq.." endppq="..endppq.." cursorppq="..cursorPPQ.." pitch="..pitch)
+		--DBG("note "..i.." startppq="..startppq.." endppq="..endppq.." cursorppq="..cursorPPQ.." pitch="..pitch)
 		
 		if math.abs(endppq - cursorPPQ) < 5 then
-			DBG("Added note "..i.." startppq="..startppq.." endppq="..endppq.." cursorppq="..cursorPPQ.." pitch="..pitch)
-			noteIndices[#noteIndices + 1] = i
-			oldDurationPPQ = endppq - startppq
+		--	DBG("Added note "..i.." startppq="..startppq.." endppq="..endppq.." cursorppq="..cursorPPQ.." pitch="..pitch)
+			noteIndexesBehind[#noteIndexesBehind + 1] = i
+		elseif startppq < cursorPPQ and cursorPPQ < endppq then
+			noteIndexesBeween[#noteIndexesBeween + 1] = i
+		elseif math.abs(cursorPPQ-startppq) < 5 then
+			noteIndexesAhead[#noteIndexesAhead + 1] = i
 		end
 		
 	end
 
-	return take, track, noteIndices, oldDurationPPQ, cursorTime, cursorPPQ
+	return take, track, noteIndexesBehind, noteIndexesBeween, noteIndexesAhead, cursorTime, cursorPPQ
 end
 
 
@@ -488,9 +496,9 @@ function cleanNotesWithZeroLenght(track, take)
 
 	for i = noteCount - 1, 0, -1 do
 		local _, selected, muted, startppq, endppq, _, pitch, _ = reaper.MIDI_GetNote(take, i)
-		DBG("Cleanup "..startppq.." end "..endppq.." sum "..endppq-startppq.." pitch "..pitch)
+		--DBG("Cleanup "..startppq.." end "..endppq.." sum "..endppq-startppq.." pitch "..pitch)
 		if(endppq-startppq <=1) then
-			DBG("MIDI_DeleteNote "..i)
+		--	DBG("MIDI_DeleteNote "..i)
 			reaper.MIDI_DeleteNote(take, i)
 		end
 	end
@@ -499,40 +507,26 @@ end
 
 
 function insertOrModifyHeldNotesByGrid(gridSteps)
-	local take, track, noteIndices, oldDurationPPQ, cursorTime, cursorPPQ = getNotesEndingAtCursor()
+	local take, track, noteIndexesBehind, noteIndexesBeween, noteIndexesAhead, cursorTime, cursorPPQ = getStuffAtCursor()
+	--TODO break this super function into chuncks?
 
-	local item = reaper.GetMediaItemTake_Item(take)
-	reaper.MarkTrackItemsDirty(track, item)
 
-	local startTime = reaper.GetCursorPosition()
 	local heldPitches = getHeldNotes(track)
 
 
-	local abandon = false
+	-- this bit fixes undo
+	local item = reaper.GetMediaItemTake_Item(take)
+	reaper.MarkTrackItemsDirty(track, item)
 
-	-- maybe scrap this one
-	if #noteIndices < 1 and gridSteps>0 then
-		DBG("no relevant notes to elongate; abandoning")
-		if gridSteps>0 then
-			insertPlayingMIDINotesAtCursorByGridSize()
-		end
-		return
-	end
-
-
-	if not take then
-		-- here insert notes directly
-		DBG("can't change note duration; no available take. Inserting...")
-		abandon = true
-	end
-
-
-	local startPPQ = reaper.MIDI_GetPPQPosFromProjTime(take, startTime)
+	local startPPQ = reaper.MIDI_GetPPQPosFromProjTime(take, cursorTime)
 	MoveEditCursorByGridSize(gridSteps)
 
-	if abandon then
+
+
+	if #heldPitches == 0 then
 		return 
 	end
+
 
 	local newEndTime = reaper.GetCursorPosition()
 	local newEndPPQ = reaper.MIDI_GetPPQPosFromProjTime(take, newEndTime)
@@ -541,25 +535,64 @@ function insertOrModifyHeldNotesByGrid(gridSteps)
 	local _, takeEnd = SnapToMeasure(newEndTime)
 	ensureTakePosLastsUntil(take, takeEnd)
 
-	--TODO figure out replacment and overlapping
-	--TODO figure out deletion
 
-	-- modify existing held notes
-	for i = 1, #noteIndices do
+	--TODO replace the three gigant loops below with only one that iterates trough the heldPithes 
+	--and instead of removing from heldPithces create unextendedPitches array
 
-
-		local _, selected, muted, startppq, endppq, chan, pitch, vel = reaper.MIDI_GetNote(take, noteIndices[i])
-
-		if #heldPitches > 0 then
-			for index,v in pairs(heldPitches) do
-				if (v.note == pitch) and (v.chan == chan) and (v.velocity == vel or gridSteps<0) then
-					reaper.MIDI_SetNote(take, noteIndices[i], nil, nil, nil, newEndPPQ, nil, nil, nil, nil)
-					table.remove(heldPitches, index)
-					break
+	-- check if notes ahead are in the way and mark them for deletion
+	if #noteIndexesAhead >0 then
+		DBG("Notes ahead")
+		for i = 1, #noteIndexesAhead do
+			if #heldPitches > 0 then
+				local _, noteSelected, noteMuted, noteStartppq, noteEndppq, noteChan, notePitch, noteVel = reaper.MIDI_GetNote(take, noteIndexesAhead[i])
+				for index,v in pairs(heldPitches) do
+					if (v.note == notePitch) and (gridSteps>0) then
+						reaper.MIDI_SetNote(take, noteIndexesAhead[i], false, nil, noteStartppq, noteStartppq, nil, nil, nil, nil)
+						break
+					end
 				end
 			end
 		end
 	end
+
+
+	-- modify existing held notes
+	if #noteIndexesBehind >0 then
+			DBG("Notes behind extend")
+		for i = 1, #noteIndexesBehind do
+			local _, noteSelected, noteMuted, noteStartppq, noteEndppq, noteChan, notePitch, noteVel = reaper.MIDI_GetNote(take, noteIndexesBehind[i])
+
+			if #heldPitches > 0 then
+				for index,v in pairs(heldPitches) do
+					if (v.note == notePitch) and (v.chan == noteChan) and (v.velocity == noteVel or gridSteps<0) then
+						reaper.MIDI_SetNote(take, noteIndexesBehind[i], false, nil, nil, newEndPPQ, nil, nil, nil, nil)
+						table.remove(heldPitches, index)
+						break
+					end
+				end
+			end
+		end
+	end
+
+
+	-- check if on top of playing notes and split them
+	if #noteIndexesBeween >0 then
+		for i = 1, #noteIndexesBeween do
+			if #heldPitches > 0 then
+				local _, noteSelected, noteMuted, noteStartppq, noteEndppq, noteChan, notePitch, noteVel = reaper.MIDI_GetNote(take, noteIndexesBeween[i])
+				for index,v in pairs(heldPitches) do
+					if (v.note == notePitch) and (gridSteps>0) then
+						reaper.MIDI_SetNote(take, noteIndexesBeween[i], nil, nil, nil, startPPQ, nil, nil, nil, nil)
+						break
+					elseif (v.note == notePitch) and (gridSteps<0) then
+						reaper.MIDI_SetNote(take, noteIndexesBeween[i], nil, nil, nil, newEndPPQ, nil, nil, nil, nil)
+						break
+					end
+				end
+			end
+		end
+	end
+
 
 	--cleanup aka delete all notes with very small lenght
 	cleanNotesWithZeroLenght(track, take)
@@ -573,13 +606,14 @@ function insertOrModifyHeldNotesByGrid(gridSteps)
 	if #heldPitches > 0 and gridSteps>0 then
 		-- you're holding notes on your MIDI keyboard; add them to the take
 
+		DBG("New notes insert")
 		local noteStartPPQ = startPPQ-- convert to PPQ
 		local noteEndPPQ = newEndPPQ-- convert to PPQ
 
 		-- insert them.
 		for k,v in pairs(heldPitches) do
-			DBG("  inserting note "..v.note.." from ["..noteStartPPQ.." -> "..noteEndPPQ.."]")
-			reaper.MIDI_InsertNote(take, true, false, noteStartPPQ, noteEndPPQ, v.chan, v.note, v.velocity)
+			--DBG("  inserting note "..v.note.." from ["..noteStartPPQ.." -> "..noteEndPPQ.."]")
+			reaper.MIDI_InsertNote(take, false, false, noteStartPPQ, noteEndPPQ, v.chan, v.note, v.velocity)
 		end
 
 
@@ -589,57 +623,12 @@ function insertOrModifyHeldNotesByGrid(gridSteps)
 end
 
 
-function insertPlayingMIDINotesAtCursorByGridSize()
-	local take = findExistingTake()
-	local noteStartTime = reaper.GetCursorPosition()
-	local noteStartQN = reaper.TimeMap2_timeToQN(0, noteStartTime)
-	local noteEndTime = reaper.TimeMap2_QNToTime(0, noteStartQN + reaper.MIDI_GetGrid(take)) 
 
-	if not take then
-		-- create starting at measure end, add note len, snap to measure end.
-		local takeStart, _ = SnapToMeasure(noteStartTime)
-		local _, takeEnd = SnapToMeasure(noteEndTime)
-		take = createTake(takeStart, takeEnd)
-	else
-		local _, takeEnd = SnapToMeasure(noteEndTime)
-		ensureTakePosLastsUntil(take, takeEnd)
-	end
-
-	if not take then
-		DBG("unable to create a take i guess; abandoning")
-		return
-	end
-
-	local mediaItem = reaper.GetMediaItemTake_Item(take)
-	local track = reaper.GetMediaItemTake_Track(take)
-
-	local pitches = getHeldNotes(track)
-	if #pitches > 0 then
-		-- you're holding notes on your MIDI keyboard; add them to the take
-
-		local noteStartPPQ = reaper.MIDI_GetPPQPosFromProjTime(take, noteStartTime)-- convert to PPQ
-		local noteEndPPQ = reaper.MIDI_GetPPQPosFromProjTime(take, noteEndTime)-- convert to PPQ
-
-		-- insert them.
-		for k,v in pairs(pitches) do
-			DBG("  inserting note "..v.note.." from ["..noteStartPPQ.." -> "..noteEndPPQ.."]")
-			reaper.MIDI_InsertNote(take, true, false, noteStartPPQ, noteEndPPQ, v.chan, v.note, v.velocity)
-		end
-	end
-
-	reaper.UpdateItemInProject(mediaItem)-- make certain the project bounds has been updated to reflect the newly recorded item
-	reaper.MoveEditCursor(noteEndTime - reaper.GetCursorPosition(), false)
-
-	adjustGridToCursorAndInsertedNote(reaper.MIDI_GetGrid(take))
-end
-
-function deleteHeldNotesUnderOrEndingAtCursor()
+function deleteHeldNotesUnderCursor()
 
 end
 
-function deleteAllNotesEndingAtCursor()
 
-end
 
 
 

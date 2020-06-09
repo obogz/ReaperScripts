@@ -1,10 +1,10 @@
 -- @description ReaperTon Step L
--- @version 1.0
+-- @version 1.3
 -- @author obogz, thanks tenfour
 -- @about
 -- 	Fast midi step tool
 -- @changelog
--- 	Initial
+-- 	fixed all known bugs 9 june 2020
 -- @provides
 -- 	core_midi_roll.lua
 -- 	[main=midi_editor] .

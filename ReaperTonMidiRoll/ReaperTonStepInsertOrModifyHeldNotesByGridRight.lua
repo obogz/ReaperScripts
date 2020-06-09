@@ -1,10 +1,10 @@
 -- @description ReaperTon Step R
--- @version 1.2
+-- @version 1.3
 -- @author obogz, thanks tenfour
 -- @about
 -- 	Fast midi step tool.
 -- @changelog
--- 	Initial
+-- 	fixed all known bugs 9 june 2020
 -- @provides
 -- 	[main=midi_editor] .
 -- @donation https://paypal.me/obogz
