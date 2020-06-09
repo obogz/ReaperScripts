@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="ed67d0643a5834cf598e3875084e5735de1365dd" name="ReaperTon">
+<index version="1" commit="3050a4b0afc8c55d2901f530cd0066552b4e1f38" name="ReaperTon">
   <category name="ReaperTonMidiRoll">
     <reapack name="ReaperTonStepInsertOrModifyHeldNotesByGridCC.lua" type="script" desc="ReaperTon Step CC">
       <metadata>
