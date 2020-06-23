@@ -28,8 +28,6 @@ Long term:
   + split held notes at cursor
   + adjust velocy of held notes under cursor
   + remove held notes under cursor
-  + adjust held note lenght using midi cc?
-  + evnelope step record?
   + move held note up or down an octave (cursor must be on the note or at it's edges)?
   + select held notes under cursor? or Chain select toggle to select specific notes? (maybe too confusing)
   + ignore octave mode? (maybe too confusing)
